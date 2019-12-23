@@ -7,11 +7,13 @@ from tqdm import tqdm
 from dataloader import src_collate_fn, TextSummarizationDataset
 from transformer.Translator import Summarizer
 from flask import Flask, jsonify, request
+from Flask_RESTful import Api, Resource
 from tokenizer import FullTokenizer
 import transformer.Constants as Constants
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+api = Api(app)
 
 parser = argparse.ArgumentParser(description='server.py')
 parser.add_argument('-trained_model',
@@ -43,17 +45,21 @@ translator = Summarizer(opt)
 tokenizer = FullTokenizer(opt.vocab)
 
 
-@app.route('/', methods=['POST'])
-def summarization():
-    json_data = request.get_json()
+class Summarizetion(Resource):
+    @staticmethod
+    def post():
+        json_data = request.get_json()
 
-    data_loader = preprocess(json_data)
-    summaries = summarize(data_loader)
-    summaries = remove_symbol(summaries)
+        data_loader = preprocess(json_data)
+        summaries = summarize(data_loader)
+        summaries = remove_symbol(summaries)
 
-    return jsonify({
-        'summaries': summaries,
-    })
+        return jsonify({
+            'summaries': summaries,
+        })
+
+
+api.add_resource(Summarizetion, '/summarize')
 
 
 def preprocess(json_data):
