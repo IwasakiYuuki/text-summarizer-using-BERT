@@ -3,6 +3,7 @@ services:
 
   uwsgi:
     build: ./app
+    runtime: nvidia
     volumes:
       - ./app:/var/www/
     ports:
