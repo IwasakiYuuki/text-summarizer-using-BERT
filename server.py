@@ -7,7 +7,7 @@ from tqdm import tqdm
 from dataloader import src_collate_fn, TextSummarizationDataset
 from transformer.Translator import Summarizer
 from flask import Flask, jsonify, request
-from Flask_RESTful import Api, Resource
+from flask_restful import Api, Resource
 from tokenizer import FullTokenizer
 import transformer.Constants as Constants
 
