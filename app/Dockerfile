@@ -13,6 +13,7 @@ RUN sudo ./bin/install-mecab-ipadic-neologd -n -y
 
 RUN mkdir /var/www
 WORKDIR /var/www
+COPY requirements.txt ./
 
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
