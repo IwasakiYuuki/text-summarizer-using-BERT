@@ -13,7 +13,7 @@ class Summarizer(object):
         self.opt = opt
         self.device = torch.device('cuda' if opt.cuda else 'cpu')
 
-        checkpoint = torch.load(opt.trained_model)
+        checkpoint = torch.load(opt.trained_model, map_location=self.device)
         model_opt = checkpoint['settings']
         self.model_opt = model_opt
 
