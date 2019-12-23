@@ -1,7 +1,7 @@
 FROM pytorch/pytorch:0.4.1-cuda9-cudnn7-devel
 
 RUN apt update \
-  && apt install -y mecab libmecab-dev mecab-ipadic-utf8 sudo curl file clang \
+  && apt install -y mecab libmecab-dev mecab-ipadic-utf8 sudo curl file \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 RUN pip install mecab-python3
@@ -16,6 +16,6 @@ WORKDIR /var/www
 COPY requirements.txt ./
 
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-RUN CC=`which clang` pip install uwsgi
 
-CMD ["uwsgi","--ini","/var/www/uwsgi.ini"]
+ENTRYPOINT ["python", "server.py"]
+CMD [""]
