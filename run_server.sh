@@ -1,2 +1,2 @@
 #!/bin/bash
-python server.py -cuda=$CUDA
+python server.py -cuda $CUDA

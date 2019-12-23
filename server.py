@@ -27,9 +27,10 @@ parser.add_argument('-batch_size', type=int, default=30,
                     help='Batch size')
 parser.add_argument('-n_best', type=int, default=1,
                     help="""If verbose is set, will output the n_best decoded sentences""")
-parser.add_argument('-cuda', type=bool, default=True)
+parser.add_argument('-cuda', type=int, default=0)
 
 opt = parser.parse_args()
+opt.cuda = bool(opt.cuda)
 
 # Prepare DataLoader
 data = torch.load(opt.src)

@@ -16,6 +16,6 @@ WORKDIR /var/www
 COPY requirements.txt ./
 
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+ENV CUDA 0
 
-ENTRYPOINT ["python", "server.py"]
-CMD [""]
+CMD ["./run_server.sh"]
