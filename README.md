@@ -27,8 +27,9 @@ docker run -it --rm -d -v `pwd`:/var/www -p [任意のポート]:6006 [上のイ
 ```
  コンテナを起動したら、
   
-  http://localhost:8000/summarize　（ポートは任意）
+  http://localhost:8000/summarize
   
+  （ポートは任意）
   にPOSTでJSONを送信すると、要約された文章がJSON形式で受信できます。
  
 ### JSON送信例
