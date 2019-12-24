@@ -25,7 +25,11 @@ docker build -t [任意のイメージ名] .
 # Dockerコンテナを起動（CUDAを使用する際には、"--runtime=nvidia -e CUDA=1"を[上のイメージ名]の前に追加）
 docker run -it --rm -d -v `pwd`:/var/www -p [任意のポート]:6006 [上のイメージ名]
 ```
- コンテナを起動したら、http://localhost:8000/summarize（ポートは任意）にPOSTでJSONを送信すると、要約された文章がJSON形式で受信できます。
+ コンテナを起動したら、
+  
+  http://localhost:8000/summarize　（ポートは任意）
+  
+  にPOSTでJSONを送信すると、要約された文章がJSON形式で受信できます。
  
 ### JSON送信例
 ```python
