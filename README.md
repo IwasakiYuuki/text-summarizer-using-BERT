@@ -8,7 +8,8 @@
  また、dockerイメージのベースにDocker Hubのpytorchイメージをそのまま使用しているためサイズが非常に大きくなっています。
  軽量化したい場合は、Alpineなどの軽量なOSをベースにPytorchのイメージを作成した上で、Dockerfileを編集してください。
 
-## 使用方法（例）
+## 使用方法
+ GPUを使用する場合にはnvidia-dockerが必要です。
 ### コンテナの起動
 ```bash
 git clone https://github.com/IwasakiYuuki/text-summarizer-using-BERT
