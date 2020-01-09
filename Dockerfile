@@ -4,6 +4,7 @@ RUN apt update \
   && apt install -y mecab libmecab-dev mecab-ipadic-utf8 sudo curl file \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
+RUN pip install --upgrade pip
 RUN pip install mecab-python3
 
 WORKDIR /tmp
